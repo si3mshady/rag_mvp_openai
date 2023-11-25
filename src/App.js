@@ -6,21 +6,30 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { StringOutputParser } from 'langchain/schema/output_parser';
 import { createClient } from '@supabase/supabase-js';
 import './App.css'; // Replace with the actual path to your CSS file
+import { useSpeechRecognition } from 'react-speech-kit';
+import { useSpeechSynthesis } from "react-speech-kit";
 
 const YourComponent = () => {
+  const [valueSpeech, setValueSpeech] = React.useState("");
+  const { speak } = useSpeechSynthesis();
   const [chatHistory, setChatHistory] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [questionInput, setQuestionInput] = useState('');
   const [responseText, setResponseText] = useState('');
-
+  const [value, setValue] = useState('')
+  const { listen, stop } = useSpeechRecognition({
+    onResult: (result) => {
+      setValue(result)
+    }
+  })
   
-  const openAPIkey = "sk-";
+  const openAPIkey = "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";
   // const openAPIkey = process.env.OPEN_API_KEY;
   const llm = new ChatOpenAI({ openAIApiKey: openAPIkey });
 
   const supabase_url = 'https://vnfifwsblpfforaszzkn.supabase.co';
   // const supabase_key = process.env.SUPABASE_API_KEY;
-  const supabase_key = "eyJhb";
+  const supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuZmlmd3NibHBmZm9yYXN6emtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA4MjEwNDksImV4cCI6MjAxNjM5NzA0OX0.pdMOIzqKstr1RHfX7bXBwcYmRIWbPjw6aU6RGuQ_qqU";
 
   const client = createClient(supabase_url, supabase_key);
 
@@ -72,9 +81,8 @@ const YourComponent = () => {
     const question = userInput;
     const vectorstore_contexts = await getVectorStoreContexts(question)
     const result = await generateAnswer(question,vectorstore_contexts)
-    console.log(result)
+    console.log(result.content)
     setResponseText(result.content)
-    setUserInput("")
 
 
   };
@@ -86,9 +94,14 @@ const YourComponent = () => {
           type="text"
           id="questionInput"
           placeholder="Ask me anything"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
+          // value={userInput}
+          // onChange={(e) => setUserInput(e.target.value)}
+        value={value}
+         onChange={(event) => setValue(event.target.value)}
         />
+         <button onMouseDown={listen} onMouseUp={stop}>
+          🎤
+        </button>
         <button onClick={progressConversation} className="hover-transition">
           Ask
         </button>
@@ -106,7 +119,11 @@ const YourComponent = () => {
           value={responseText}
           // value={chatHistory[chatHistory.length - 1]?.content || ''}
         />
+        <button onClick={() => speak({ text: responseText })}>
+                   🗣️ Speech
+                </button>
       </div>
+      
     </div>
   );
 };

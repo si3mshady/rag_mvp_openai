@@ -72,6 +72,7 @@ body {
 
 .response-box {
   min-height: 100px;
+  min-width: 400;
   background: rgba(255, 165, 0, 0.8); /* Orange */
   color: #000; /* Black */
   border-radius: 15px;
@@ -96,4 +97,10 @@ textarea {
 .hover-transition:hover {
   background-color: forestgreen;
   color: white;
+}
+
+.response-box > button {
+  margin-left: 10px;
+  color: white;
+  background-color:   #13151a;/* Black */
 }
