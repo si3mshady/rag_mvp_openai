@@ -7,10 +7,7 @@ import { StringOutputParser } from 'langchain/schema/output_parser';
 import { createClient } from '@supabase/supabase-js';
 import './App.css'; // Replace with the actual path to your CSS file
 import { useSpeechRecognition } from 'react-speech-kit';
-<<<<<<< HEAD
 import { useSpeechSynthesis } from "react-speech-kit";
-=======
->>>>>>> main
 
 const YourComponent = () => {
   const [valueSpeech, setValueSpeech] = React.useState("");
@@ -26,17 +23,13 @@ const YourComponent = () => {
     }
   })
   
-<<<<<<< HEAD
-  const openAPIkey = "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";
-=======
-  const openAPIkey = "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";
->>>>>>> main
+  const openAPIkey = "sk-";
   // const openAPIkey = process.env.OPEN_API_KEY;
   const llm = new ChatOpenAI({ openAIApiKey: openAPIkey });
 
   const supabase_url = 'https://vnfifwsblpfforaszzkn.supabase.co';
   // const supabase_key = process.env.SUPABASE_API_KEY;
-  const supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuZmlmd3NibHBmZm9yYXN6emtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA4MjEwNDksImV4cCI6MjAxNjM5NzA0OX0.pdMOIzqKstr1RHfX7bXBwcYmRIWbPjw6aU6RGuQ_qqU";
+  const supabase_key = ".";
 
   const client = createClient(supabase_url, supabase_key);
 
@@ -88,13 +81,8 @@ const YourComponent = () => {
     const question = userInput;
     const vectorstore_contexts = await getVectorStoreContexts(question)
     const result = await generateAnswer(question,vectorstore_contexts)
-<<<<<<< HEAD
     console.log(result.content)
     setResponseText(result.content)
-=======
-    console.log(result)
-    setResponseText(result)
->>>>>>> main
 
 
   };
