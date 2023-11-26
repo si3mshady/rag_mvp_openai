@@ -1,10 +1,12 @@
 
 
 // eksctl create cluster --name=nws-llm --node-type=t2.medium --nodes=2 --region us-east-2
-// aws eks update-kubeconfig --name nws --region us-east-2
+// aws eks update-kubeconfig --name nws-l --region us-east-2
 // eksctl create cluster --name=nws-llm-knight --node-type=t2.medium --nodes=2 --region=us-east-2 --version=1.24
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube
 
-
+aws eks update-kubeconfig --name nws-llm-knight —region us-east-2 —profile default
+aws eks - delete-cluster --name nws-llm-knight 
 
 
 
