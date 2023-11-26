@@ -11,8 +11,8 @@ COPY package*.json ./
 RUN npm install
 
 
-# Expose port 80 for Nginx
-EXPOSE 8080
+# Expose port 3000 
+EXPOSE 3000 
 
-# Start Nginx
+# Start NPM
 CMD ["npm","start"]

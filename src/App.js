@@ -1,3 +1,13 @@
+
+
+// eksctl create cluster --name=nws-llm --node-type=t2.medium --nodes=2 --region us-east-2
+// aws eks update-kubeconfig --name nws --region us-east-2
+// eksctl create cluster --name=nws-llm-knight --node-type=t2.medium --nodes=2 --region=us-east-2 --version=1.24
+
+
+
+
+
 import React, { useState } from 'react';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { PromptTemplate } from 'langchain/prompts';
@@ -127,5 +137,9 @@ const YourComponent = () => {
     </div>
   );
 };
+// aws eks --region <region-code> update-kubeconfig --name nws
 
 export default YourComponent;
+
+// eksctl create cluster --name=nws --node-type=t2.medium --nodes=2
+// aws eks --region <region-code> update-kubeconfig --name nws
