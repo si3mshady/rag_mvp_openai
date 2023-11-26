@@ -35,13 +35,13 @@ const YourComponent = () => {
     }
   })
   
-  const openAPIkey = "sk-";
-  // const openAPIkey = process.env.OPEN_API_KEY;
+
+  const openAPIkey =  process.env.REACT_APP_OPEN_API_KEY;
   const llm = new ChatOpenAI({ openAIApiKey: openAPIkey });
 
   const supabase_url = 'https://vnfifwsblpfforaszzkn.supabase.co';
-  // const supabase_key = process.env.SUPABASE_API_KEY;
-  const supabase_key = ".";
+  const supabase_key = process.env.REACT_APP_SUPABASE_API_KEY;
+  
 
   const client = createClient(supabase_url, supabase_key);
 
