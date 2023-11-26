@@ -38,6 +38,7 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region us-east-2
 
+
       - name: Update kubeconfig for EKS cluster
         run: |
           aws eks update-kubeconfig --name llm --region us-east-2
