@@ -43,4 +43,4 @@ jobs:
           aws eks update-kubeconfig --name llm --region us-east-2
 
       - name: Deploy to Kubernetes
-        run: kubectl apply -f manifest.yaml
+        run: kubectl apply -f manifest.yml
